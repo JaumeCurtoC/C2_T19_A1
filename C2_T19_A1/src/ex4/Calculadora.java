@@ -26,14 +26,17 @@ public class Calculadora extends JFrame {
 	 * Create the frame.
 	 */
 	public Calculadora() {
+		// Creación del objeto padre donde colocaremos el resto de objetos.
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 373, 207);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
+		
+		// Indicamos Layout Absolute
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
+		// Declaración de las clases JTextField
 		textField = new JTextField();
 		textField.setBounds(10, 34, 86, 20);
 		contentPane.add(textField);
@@ -50,6 +53,7 @@ public class Calculadora extends JFrame {
 		contentPane.add(txtResultado);
 		txtResultado.setColumns(10);
 
+		// Declaración de las clases JButton
 		JButton btnSuma = new JButton("Suma");
 		btnSuma.setBounds(10, 88, 89, 23);
 		contentPane.add(btnSuma);
@@ -70,6 +74,7 @@ public class Calculadora extends JFrame {
 		btnSalir.setBounds(256, 122, 89, 23);
 		contentPane.add(btnSalir);
 
+		// Declaración de las clases JLabels
 		JLabel lbl = new JLabel("=");
 		lbl.setBounds(231, 37, 15, 14);
 		contentPane.add(lbl);
@@ -86,8 +91,10 @@ public class Calculadora extends JFrame {
 		lblOp.setBounds(106, 37, 15, 14);
 		contentPane.add(lblOp);
 
+		// Hacemos visible la interfaz gráfica
 		this.setVisible(true);
 
+		// Llamamos a los métodos para asignar un Listener a los JButtons
 		btnSumar(btnSuma, lblOp);
 		btnRestar(btnResta, lblOp);
 		btnMultiplicar(btnMul, lblOp);
@@ -95,6 +102,8 @@ public class Calculadora extends JFrame {
 		btnSalir(btnSalir);
 	}
 
+	// Importante controlar las excepciones para poder seguir usando la aplicación
+	
 	// Asignar un Listener al botón de Suma
 	private void btnSumar(JButton btn, JLabel op) {
 		btn.addActionListener(new ActionListener() {
@@ -174,6 +183,7 @@ public class Calculadora extends JFrame {
 	private void btnSalir(JButton btn) {
 		btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// Con esta línea cerraremos la interfaz gráfica y pararemos el proceso
 				System.exit(0);
 			}
 		});

@@ -25,18 +25,18 @@ public class VCuestionario extends JFrame {
 	 * Create the frame.
 	 */
 	public VCuestionario() {
+		// Creación del objeto padre donde colocaremos el resto de objetos.
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 344, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
+		
+		// Indicamos Layout Absolute
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lbl = new JLabel("Sistema Operativo");
-		lbl.setBounds(21, 11, 109, 14);
-		contentPane.add(lbl);
-		
+		// Declaración de las clases JRadioButton
+		// Importante usar el setActionCommand para sacar el valor de los JRadioButton
 		JRadioButton rdbtn = new JRadioButton("Windows");
 		rdbtn.setBounds(21, 32, 109, 23);
 		contentPane.add(rdbtn);
@@ -52,15 +52,14 @@ public class VCuestionario extends JFrame {
 		contentPane.add(rdbtn2);
 		rdbtn2.setActionCommand("Mac");
 		
+		// Agrupamos los JRadioButton en un mismo ButtonGroup
+		// De esta forma el usuario solo puede elegir una de las opciones
 		ButtonGroup bgroup = new ButtonGroup();
 		bgroup.add(rdbtn);
 		bgroup.add(rdbtn1);
 		bgroup.add(rdbtn2);
 		
-		JLabel lbl1 = new JLabel("Especialidad");
-		lbl1.setBounds(201, 11, 74, 14);
-		contentPane.add(lbl1);
-		
+		// Declaración de las clases JCheckBox
 		JCheckBox cb = new JCheckBox("Programación");
 		cb.setBounds(201, 32, 119, 23);
 		contentPane.add(cb);
@@ -73,11 +72,21 @@ public class VCuestionario extends JFrame {
 		cb2.setBounds(201, 84, 119, 23);
 		contentPane.add(cb2);
 		
+		// Declaración de la clase JSlider
 		JSlider slider = new JSlider();
 		slider.setValue(5);
 		slider.setMaximum(10);
 		slider.setBounds(21, 152, 200, 26);
 		contentPane.add(slider);
+		
+		// Declaración de las clases JLabel
+		JLabel lbl = new JLabel("Sistema Operativo");
+		lbl.setBounds(21, 11, 109, 14);
+		contentPane.add(lbl);
+		
+		JLabel lbl1 = new JLabel("Especialidad");
+		lbl1.setBounds(201, 11, 74, 14);
+		contentPane.add(lbl1);
 		
 		JLabel lbl2 = new JLabel("Horas dedicadas al ordenador");
 		lbl2.setBounds(21, 127, 196, 14);
@@ -95,12 +104,15 @@ public class VCuestionario extends JFrame {
 		lbl5.setBounds(115, 179, 15, 14);
 		contentPane.add(lbl5);
 		
+		// Declaración de la clase JButton
 		JButton btn = new JButton("Finalizar");
 		btn.setBounds(110, 214, 89, 23);
 		contentPane.add(btn);
 		
+		// Hacemos visible la interfaz gráfica
 		this.setVisible(true);
 		
+		// Llamamos a un método para asignar un Listener al JButton
 		btnListener(btn, bgroup, cb, cb1, cb2, slider);
 	}
 	
@@ -116,6 +128,7 @@ public class VCuestionario extends JFrame {
 			});
 		}
 		
+		// Concatenamos los CheckBoxs en caso que hayan sido seleccionados 
 		private String especialidades(JCheckBox cb, JCheckBox cb1, JCheckBox cb2) {
 			String esp = "";
 			
